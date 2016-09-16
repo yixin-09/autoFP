@@ -1,0 +1,135 @@
+Test program: gsl_function
+7.3074230747e+32
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+7.6311136317e+25
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.0597014549e+59
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+4.6048804215e+223
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+4.0756443584e+148
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.7844252992e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+2.0505591991e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+7.6655270429e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.1714400692e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.0245730058e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+2.8579088556e+186
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+5.2569640793e+46
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+3.7582901603e+239
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.8414755873e+268
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.4391146466e+141
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+2.1419901370e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.4112165370e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+3.4190918271e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.6603707729e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+6.6375166450e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.2271921153e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+9.3397875243e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+9.0120019660e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+6.8318880266e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.1537316964e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.7183262037e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+9.4872502415e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+9.7281744412e+303
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+1.1334302642e+304
+1.0000000000e+00
+Running on valgrind
+Test program: gsl_function
+7.3214992444e+303
+1.0000000000e+00
+Running on valgrind
+avgval
+9.98718408257e+303
+1.49807761239e+304
+7.8492767841e-14
+1
+2
+4
+5
+6
+the max error the tool found is :1.92512672470002e-13
+6
+float.c
+19
+echo 8.181149005889893>>log_time
+time delta: 8.18207788467
