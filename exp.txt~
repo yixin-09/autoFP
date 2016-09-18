@@ -7,12 +7,11 @@ variable tmp___1
 sin
 8192 + 1
 variable d
-tmp___2
-variable tmp___2
-exp
-2
-variable f
 tmp___3
 variable tmp___3
+exp
+2
+tmp___2 + 2
+variable tmp___2
 cos
-3
+8192

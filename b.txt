@@ -437,10 +437,12 @@
 extern printf : TFun(TInt(int, ), None,  /* missing proto */  ) ;
 #line 10
 extern strtod : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 24
+#line 22
 extern cos : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 24
+#line 22
 extern sin : TFun(TInt(int, ), None,  /* missing proto */  ) ;
+#line 23
+extern exp : TFun(TInt(int, ), None,  /* missing proto */  ) ;
 #line 6 "float.c"
 main : TFun(TInt(int, ), argc: TInt(int, ), argv: TPtr(TPtr(TInt(char, ), ), ), ) 
 { input : TArray(TInt(char, ), Some(Const(Int64(800,int,None))), ) ;
@@ -451,10 +453,14 @@ main : TFun(TInt(int, ), argc: TInt(int, ), argv: TPtr(TPtr(TInt(char, ), ), ), 
   n : TInt(int, ) ;
   y : TFloat(double, ) ;
   z : TFloat(double, ) ;
-  b : TArray(TFloat(double, ), Some(Const(Int64(20,int,None))), ) ;
+  b : TFloat(double, ) ;
+  d : TFloat(double, ) ;
+  f : TFloat(double, ) ;
+  r : TFloat(double, ) ;
   tmp___0 : TInt(int, ) ;
   tmp___1 : TInt(int, ) ;
-  r : TFloat(double, ) ;
+  tmp___2 : TInt(int, ) ;
+  tmp___3 : TInt(int, ) ;
 
   {
 #line 8
@@ -488,40 +494,49 @@ main : TFun(TInt(int, ), argc: TInt(int, ), argv: TPtr(TPtr(TInt(char, ), ), ), 
     Var(y, NoOffset) += Lval(Var(x, NoOffset));
 #line 19
     Var(x, NoOffset) = CastE(TFloat(double, ), Const(Int64(1,int,None)));
-#line 21
+#line 20
     Var(n, NoOffset) = Lval(Var(n, NoOffset));
 #line 17
     Var(i, NoOffset) ++;
   }
-#line 23
+#line 21
   Var(y, NoOffset) /= Lval(Var(z, NoOffset));
-#line 24
+#line 22
   Var(tmp___0, NoOffset) = Lval(Var(cos, NoOffset))(Lval(Var(z, NoOffset)));
-#line 24
+#line 22
   Var(tmp___1, NoOffset) = Lval(Var(sin, NoOffset))(PlusA(Lval(Var(z, NoOffset)),
                                                           CastE(TFloat(double, ),
                                                                 Const(Int64(1,int,None)))));
+#line 22
+  Var(b, NoOffset) = CastE(TFloat(double, ), PlusA(PlusA(Lval(Var(tmp___0, NoOffset)),
+                                                         Lval(Var(tmp___1, NoOffset))),
+                                                   Const(Int64(1,int,None))));
+#line 23
+  Var(tmp___2, NoOffset) = Lval(Var(exp, NoOffset))(Const(Int64(2,int,None)));
+#line 23
+  Var(d, NoOffset) = CastE(TFloat(double, ), Lval(Var(tmp___2, NoOffset)));
 #line 24
-  Var(b, Index(Const(Int64(0,int,None)), NoOffset)) = CastE(TFloat(double, ), PlusA(PlusA(Lval(Var(tmp___0,
-                                                                                                   NoOffset)),
-                                                                                          Lval(Var(tmp___1,
-                                                                                                   NoOffset))),
-                                                                                    Const(Int64(1,int,None))));
-#line 25
   if (>(PlusA(Lval(Var(z, NoOffset)), CastE(TFloat(double, ), Const(Int64(100,int,None)))),
         CastE(TFloat(double, ), Const(Int64(300,int,None))))) {
 #line 25
+    Var(tmp___3, NoOffset) = Lval(Var(cos, NoOffset))(Const(Int64(3,int,None)));
+#line 25
+    Var(f, NoOffset) = CastE(TFloat(double, ), Lval(Var(tmp___3, NoOffset)));
+#line 26
     Var(r, NoOffset) = /(PlusA(PlusA(Const(CReal(0.125000, double, 0.125)), Lval(Var(x,
                                                                                      NoOffset))),
-                               CastE(TFloat(double, ), Lval(Var(n, NoOffset)))), PlusA(MinusA(Lval(Var(y,
-                                                                                                       NoOffset)),
-                                                                                              Lval(Var(b,
-                                                                                                       Index(Const(Int64(0,int,None)),
-                                                                                                             NoOffset)))),
+                               CastE(TFloat(double, ), Lval(Var(n, NoOffset)))), PlusA(PlusA(PlusA(MinusA(Lval(Var(y,
+                                                                                                                   NoOffset)),
+                                                                                                          Lval(Var(b,
+                                                                                                                   NoOffset))),
+                                                                                                   Lval(Var(d,
+                                                                                                            NoOffset))),
+                                                                                             Lval(Var(f,
+                                                                                                      NoOffset))),
                                                                                        UnOp(-,
                                                                                             Const(CReal(0.875000, double, 0.875)))));
   }
-#line 26
+#line 29
   return (Const(Int64(0,int,None)));
 }
 }

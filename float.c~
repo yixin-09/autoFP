@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     b = cos(z)+sin(z+1)+1;
     d = exp(2);
     if (z+100>300){
-	f=cos(3);
+	f=3;
 	r=(0.125+x+n)/(y-b+d+f+(-0.875));
 
     }

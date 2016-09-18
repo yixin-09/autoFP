@@ -82,7 +82,7 @@ let rec move_out_costable (fid:int)(s:Cil.stmt) =
 		  | If (exp,b1,b2,l) -> (if l.line < fid then begin List.iter (move_out_costable fid) b1.bstmts;List.iter (move_out_costable fid) b2.bstmts;end else ();)
 		  | Loop (b,l,s1,s2) -> (if l.line < fid then begin List.iter (move_out_costable fid) b.bstmts;
 					 end else ();)
-	          | Instr il-> if (!stmt_id = s.sid) then begin List.iter (save_to_costable fid) il;end else List.iter (move_out_costable_i fid) il;
+	          | Instr il-> if (!stmt_id = s.sid) then begin List.iter (save_to_calltable fid) il;end else List.iter (move_out_costable_i fid) il;
 	          | _ -> ();
 	)
 	
