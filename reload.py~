@@ -1,0 +1,35 @@
+import os
+import re
+import fileinput
+def re_load(f1,f2,fid):
+	rf1=open(f1,'r')
+	rf2=open(f2,'r')
+	f2lines = rf2.readlines()
+	line2 = f2lines[fid-1]
+	line2_tmp = line2
+	com_l = re.findall(';',line2)
+	line1 = ''
+	for line in rf1.readlines():
+		if(len(re.findall('\(FPCore',line))==1):
+			break
+		else:
+			line1 = line1 + line.strip()
+	if len(com_l) == 1 :
+		print 'zero'
+		line2 = re.sub('=.*','='+line1+';', line2)
+		print line1
+	rf2.close()
+	wf2=open(f2,'w')
+	for line in f2lines:
+		if line == line2_tmp:
+			line = line2
+		wf2.write(line)
+	rf1.close()
+	wf2.close()
+	
+
+
+if __name__ == '__main__':
+	
+	re_load('herbie/exp.log','float.c',24)
+

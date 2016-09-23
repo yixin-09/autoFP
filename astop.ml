@@ -15,6 +15,13 @@ let debug fmt =
     flush stdout ; 
   end in
   Printf.kprintf k fmt 
+
+
+let print_exp_t  (fn:string) (exPrinter:Cil.defaultCilPrinterClass) (exp: Cil.exp)= 
+	let fout = open_out_gen [Open_append;Open_text;Open_creat] 0b111100100 fn in 
+    	Pretty.fprint fout 100 (Cil.printExp exPrinter () exp);
+	Printf.fprintf fout "\n";
+	close_out fout;;
 (* construct costable *)
 type costableh = (Cil.exp, Cil.varinfo) Hashtbl.t
 (* whether the exp is a constant*) 
@@ -68,7 +75,7 @@ let save_to_costable (fid:int)(i: Cil.instr) =
 
 let move_out_costable_i (fid:int)(i: Cil.instr) = 
   (match i with 
-  | Set ((dest,offset), e, l) ->(if l.line < fid then begin (if Hashtbl.mem costable (dest,offset) then begin Hashtbl.remove costable (dest,offset); end else 
+  | Set ((dest,offset), e, l) ->(if l.line <= fid then begin (if Hashtbl.mem costable (dest,offset) then begin Hashtbl.remove costable (dest,offset); end else 
 		() ) end else ();)
   | Call (lv,exp,exps,l)->(if l.line < fid then begin 
 				(match lv with 
@@ -78,9 +85,9 @@ let move_out_costable_i (fid:int)(i: Cil.instr) =
 
 let rec move_out_costable (fid:int)(s:Cil.stmt) =
 	(match s.skind with 
-		  | Switch(exp,b,stmts,l) -> (if l.line < fid then begin List.iter (move_out_costable fid) b.bstmts;List.iter (move_out_costable fid) stmts; end else ();)
-		  | If (exp,b1,b2,l) -> (if l.line < fid then begin List.iter (move_out_costable fid) b1.bstmts;List.iter (move_out_costable fid) b2.bstmts;end else ();)
-		  | Loop (b,l,s1,s2) -> (if l.line < fid then begin List.iter (move_out_costable fid) b.bstmts;
+		  | Switch(exp,b,stmts,l) -> (if l.line <= fid then begin List.iter (move_out_costable fid) b.bstmts;List.iter (move_out_costable fid) stmts; end else ();)
+		  | If (exp,b1,b2,l) -> (if l.line <= fid then begin List.iter (move_out_costable fid) b1.bstmts;List.iter (move_out_costable fid) b2.bstmts;end else ();)
+		  | Loop (b,l,s1,s2) -> (if l.line <= fid then begin List.iter (move_out_costable fid) b.bstmts;
 					 end else ();)
 	          | Instr il-> if (!stmt_id = s.sid) then begin List.iter (save_to_costable fid) il;end else List.iter (move_out_costable_i fid) il;
 	          | _ -> ();
@@ -125,7 +132,7 @@ let rec covertBpCall (e: exp) =
 
 let save_to_calltable (fid:int)(i:instr) =
 	(match i with
-	| Call (lv,exp,exps,l)->(if l.line < fid then begin (match lv with 
+	| Call (lv,exp,exps,l)->(if l.line <= fid then begin (match lv with 
 				|Some x -> (let ls = List.map covertBpExp exps in 
 					    Hashtbl.add calltable x exp;
 					    Hashtbl.add calltables x ls;)
@@ -139,11 +146,13 @@ let save_to_calltable (fid:int)(i:instr) =
 		| _ -> ();)) end else ();)
 	|_->();)
 let move_out_calltable_i (fid:int)(i: Cil.instr) = 
+	let exPrinter = new Cil.defaultCilPrinterClass in 
+	let filename = "new"^".txt" in
   (match i with 
   | Set ((dest,offset), e, l) ->(if l.line < fid then begin (if Hashtbl.mem calltable (dest,offset) then begin Hashtbl.remove calltable (dest,offset);Hashtbl.remove calltables (dest,offset); end 					else () ) end else ();)
   | Call (lv,exp,exps,l)->(if l.line < fid then begin 
 				(match lv with 
-				|Some x -> (if Hashtbl.mem calltable x then begin Hashtbl.remove calltable x;Hashtbl.remove calltables x; end else ())
+				|Some x -> (if Hashtbl.mem calltable x then begin Hashtbl.remove calltable x;Hashtbl.remove calltables x;(print_exp_t filename exPrinter (Lval(x))); end else ())
 				|None -> ();) end else ();)
   | Asm (_, _, _, _, _, _)->();)
 
@@ -198,6 +207,7 @@ let rec print_call (e:Cil.exp) =
 					else (let exps = Hashtbl.find calltables vr in List.iter (print_exp filename exPrinter) (List.append [exp] exps);List.iter print_call exps;))
 				end else ();)
 	| UnOp (unop,exp,ty) -> if (has_call exp) then begin print_call exp; end else ();
+	| CastE(ty,exp) -> if (has_call exp) then begin print_call exp; end else ();
 	| _ ->();)
 let rec print_val (e:Cil.exp) = 
 	let valPrinter = new Cil.defaultCilPrinterClass in 
@@ -220,14 +230,14 @@ let print_Instr (fid:int)(i: instr) =
 				      let fout = open_out_gen [Open_append;Open_text;Open_creat] 0b111100100 fname in 
     				      Pretty.fprint fout 100 (Cil.printExp exPrinter () cvtExp);
     				      close_out fout ;print_val e;);if(has_call e) then begin print_call e; end else ();
-		| CastE(ty,e) ->(if l.line = fid then begin 
-				(match e with 
+		| CastE(ty,exp) ->(if l.line = fid then begin 
+				(match exp with 
 				| BinOp (bp,e1,e2,ty) ->(let cvtExp = BinOp (bp, covertBpExp e1, covertBpExp e2,ty) in
 		                      let exPrinter = new Cil.defaultCilPrinterClass in 
 				      let fname = "a" ^ ".txt" in
 				      let fout = open_out_gen [Open_append;Open_text;Open_creat] 0b111100100 fname in 
     				      Pretty.fprint fout 100 (Cil.printExp exPrinter () cvtExp);
-    				      close_out fout ;print_val e;);if(has_call e) then begin print_call e; end else ();
+    				      close_out fout ;print_val e;);if(has_call exp) then begin print_call exp; end else ();
 				| _ -> ();) end else ();)
 		| _ -> ();) end else (););
   | _ -> ();)
@@ -261,18 +271,10 @@ let c_call = new callVisitor
 let stmt_v = new sidVisitor
 let main () = begin
   let usageMsg = "Prototype ast coverter\n" in 
-  let do_cfg = ref false in 
-  let do_empty = ref false in 
-  let do_every = ref false in 
-  let do_uniq = ref false in 
   let get_id = ref 0 in
   let filenames = ref [] in 
 
   let argDescr = [
-    "--calls", Arg.Set do_cfg, " convert calls to end basic blocks";
-    "--empty", Arg.Set do_empty, " allow changes to empty blocks";
-    "--uniq", Arg.Set do_uniq, " print each visited stmt only once";
-    "--every-instr", Arg.Set do_every, " allow changes between every statement";
     "--id", Arg.Set_int get_id, "set the id"
   ] in 
   let handleArg str = filenames := str :: !filenames in 
@@ -290,7 +292,7 @@ let main () = begin
       visitCilFileSameGlobals (s_cos file id) file;
       visitCilFileSameGlobals (c_call file id) file;  
       visitCilFileSameGlobals (f_exp file id) file;
-      let clPrinter = new Cil.plainCilPrinterClass in 
+      let clPrinter = new Cil.defaultCilPrinterClass in 
       let fname = "b" ^ ".txt" in
       let fout = open_out fname in 
       Cil.dumpFile clPrinter fout "fileprinter" file  ;

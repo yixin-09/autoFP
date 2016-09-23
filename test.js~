@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var math = require('mathjs');
+
+var parser = math.eval("\frac{\color{blue}{1}}{\sqrt{x + 1} + \sqrt{x}}");
+console.log(parser);

@@ -1,0 +1,2 @@
+gcc -o $1 test.c $1.c -g -O0 -lm
+/home/test/pldi/FpDebug/valgrind/install/bin/valgrind --tool=fpdebug --precision=120 --ignore-libraries=no /home/test/pldi/FpDebug/valgrind/fpdebug/autoFP/$1/$1 $2

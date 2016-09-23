@@ -6,12 +6,22 @@ cos
 variable tmp___1
 sin
 8192 + 1
-variable d
-tmp___3
-variable tmp___3
+variable s
+tmp___2
+variable tmp___2
 exp
 2
-tmp___2 + 2
-variable tmp___2
+variable tmp___3
+sqrt
+b
+variable b
+(tmp___0 + tmp___1) + 1
+variable tmp___0
 cos
 8192
+variable tmp___1
+sin
+8192 + 1
+variable tmp___4
+exp
+3

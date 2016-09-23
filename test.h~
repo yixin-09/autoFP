@@ -1,0 +1,4 @@
+#ifndef _H_TEST
+#define _H_TEST
+double test(double rad);
+#endif

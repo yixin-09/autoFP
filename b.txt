@@ -2,541 +2,324 @@
 /* print_CIL_Input is false */
 
 /* compiler builtin: 
-   __builtin_varargs_start : TFun(TVoid(), : TBuiltin_va_list(), ) ;  */
+   void __builtin_varargs_start(__builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_strcmp : TFun(TInt(int, ), : TPtr(TInt(char,  const  ), ), : TPtr(TInt(char,
-                                                                                     const  ),
-                           ),
-) ;  */
+   int __builtin_strcmp(char const   * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin___memmove_chk : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TPtr(TVoid( const  ),
-                                  ), : TInt(unsigned long,
-                                  ),
-                                  : TInt(unsigned long, ), ) ;  */
+   void *__builtin___memmove_chk(void * , void const   * , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_strpbrk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char,  const  ), ),
-                            : TPtr(TInt(char,  const  ), ), ) ;  */
+   char *__builtin_strpbrk(char const   * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_memcpy : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TPtr(TVoid( const  ),
-                           ), : TInt(unsigned long,
-                           ),
-) ;  */
+   void *__builtin_memcpy(void * , void const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_exp : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_exp(double  ) ;  */
 /* compiler builtin: 
-   __builtin_nanl : TFun(TFloat(long double, ), : TPtr(TInt(char,  const  ), ), ) ;  */
+   long double __builtin_nanl(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_cos : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_cos(double  ) ;  */
 /* compiler builtin: 
-   __builtin_strchr : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TInt(int,
-                           ),
-) ;  */
+   char *__builtin_strchr(char * , int  ) ;  */
 /* compiler builtin: 
-   __builtin_atan2f : TFun(TFloat(float, ), : TFloat(float, ), : TFloat(float, ),
-) ;  */
+   float __builtin_atan2f(float  , float  ) ;  */
 /* compiler builtin: 
-   __builtin___memcpy_chk : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TPtr(TVoid( const  ),
-                                 ), : TInt(unsigned long,
-                                 ),
-                                 : TInt(unsigned long, ), ) ;  */
+   void *__builtin___memcpy_chk(void * , void const   * , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_asin : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_asin(double  ) ;  */
 /* compiler builtin: 
-   __builtin_ctz : TFun(TInt(int, ), : TInt(unsigned int, ), ) ;  */
+   int __builtin_ctz(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_stpcpy : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                      const  ),
-                           ),
-) ;  */
+   char *__builtin_stpcpy(char * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_ia32_unpckhps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                                  : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                                  : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_unpckhps(float __attribute__((____vector_size____(16)))   ,
+                                                                           float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin_nans : TFun(TFloat(double, ), : TPtr(TInt(char,  const  ), ), ) ;  */
+   double __builtin_nans(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_atan2l : TFun(TFloat(long double, ), : TFloat(long double, ), : TFloat(long double,
-                           ),
-) ;  */
+   long double __builtin_atan2l(long double  , long double  ) ;  */
 /* compiler builtin: 
-   __builtin_logf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_logf(float  ) ;  */
 /* compiler builtin: 
-   __builtin___fprintf_chk : TFun(TInt(int, ), : TPtr(TVoid(), ), : TInt(int, ), : TPtr(TInt(char,
-                                                                                              const  ),
-                                  )...,
-) ;  */
+   int __builtin___fprintf_chk(void * , int  , char const   *  , ...) ;  */
 /* compiler builtin: 
-   __builtin___vsprintf_chk : TFun(TInt(int, ), : TPtr(TInt(char, ), ), : TInt(int,
-                                   ),
-                                   : TInt(unsigned long, ), : TPtr(TInt(char,  const  ),
-                                   ), : TBuiltin_va_list(),
-) ;  */
+   int __builtin___vsprintf_chk(char * , int  , unsigned long  , char const   * ,
+                                __builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin___strncpy_chk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                             const  ),
-                                  ),
-                                  : TInt(unsigned long, ), : TInt(unsigned long, ),
-) ;  */
+   char *__builtin___strncpy_chk(char * , char const   * , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_ia32_subps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_subps(float __attribute__((____vector_size____(16)))   ,
+                                                                        float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin_log10f : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_log10f(float  ) ;  */
 /* compiler builtin: 
-   __builtin_atan : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_atan(double  ) ;  */
 /* compiler builtin: 
-   __builtin_alloca : TFun(TPtr(TVoid(), ), : TInt(unsigned long, ), ) ;  */
+   void *__builtin_alloca(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_va_end : TFun(TVoid(), : TBuiltin_va_list(), ) ;  */
+   void __builtin_va_end(__builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_strncmp : TFun(TInt(int, ), : TPtr(TInt(char,  const  ), ), : TPtr(TInt(char,
-                                                                                      const  ),
-                            ),
-                            : TInt(unsigned long, ), ) ;  */
+   int __builtin_strncmp(char const   * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_sin : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_sin(double  ) ;  */
 /* compiler builtin: 
-   __builtin_logl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_logl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_coshf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_coshf(float  ) ;  */
 /* compiler builtin: 
-   __builtin___mempcpy_chk : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TPtr(TVoid( const  ),
-                                  ), : TInt(unsigned long,
-                                  ),
-                                  : TInt(unsigned long, ), ) ;  */
+   void *__builtin___mempcpy_chk(void * , void const   * , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin___strcat_chk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                            const  ),
-                                 ),
-                                 : TInt(unsigned long, ), ) ;  */
+   char *__builtin___strcat_chk(char * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_nansf : TFun(TFloat(float, ), : TPtr(TInt(char,  const  ), ), ) ;  */
+   float __builtin_nansf(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_memset : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TInt(int, ), : TInt(int,
-                           ),
-) ;  */
+   void *__builtin_memset(void * , int  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_va_copy : TFun(TVoid(), : TBuiltin_va_list(), : TBuiltin_va_list(), ) ;  */
+   void __builtin_va_copy(__builtin_va_list  , __builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_sinhf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_sinhf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_log10l : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_log10l(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_coshl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_coshl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_strlen : TFun(TInt(unsigned long, ), : TPtr(TInt(char,  const  ), ),
-) ;  */
+   unsigned long __builtin_strlen(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_ffs : TFun(TInt(int, ), : TInt(unsigned int, ), ) ;  */
+   int __builtin_ffs(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_asinf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_asinf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_nansl : TFun(TFloat(long double, ), : TPtr(TInt(char,  const  ), ), ) ;  */
+   long double __builtin_nansl(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_frexp : TFun(TFloat(double, ), : TFloat(double, ), : TPtr(TInt(int, ),
-                          ), ) ;  */
+   double __builtin_frexp(double  , int * ) ;  */
 /* compiler builtin: 
-   __builtin_tan : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_tan(double  ) ;  */
 /* compiler builtin: 
-   __builtin_sinhl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_sinhl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_frexpf : TFun(TFloat(float, ), : TFloat(float, ), : TPtr(TInt(int, ),
-                           ), ) ;  */
+   float __builtin_frexpf(float  , int * ) ;  */
 /* compiler builtin: 
-   __builtin_asinl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_asinl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_frame_address : TFun(TPtr(TVoid(), ), : TInt(unsigned int, ), ) ;  */
+   void *__builtin_frame_address(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_floor : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_floor(double  ) ;  */
 /* compiler builtin: 
-   __builtin_tanhf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_tanhf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_parityl : TFun(TInt(int, ), : TInt(unsigned long, ), ) ;  */
+   int __builtin_parityl(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_clzl : TFun(TInt(int, ), : TInt(unsigned long, ), ) ;  */
+   int __builtin_clzl(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_powi : TFun(TFloat(double, ), : TFloat(double, ), : TInt(int, ), ) ;  */
+   double __builtin_powi(double  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_frexpl : TFun(TFloat(long double, ), : TFloat(long double, ), : TPtr(TInt(int,
-                                                                                  ),
-                           ),
-) ;  */
+   long double __builtin_frexpl(long double  , int * ) ;  */
 /* compiler builtin: 
-   __builtin_atanf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_atanf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_huge_valf : TFun(TFloat(float, ), , ) ;  */
+   float __builtin_huge_valf(void) ;  */
 /* compiler builtin: 
-   __builtin_sqrtf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_sqrtf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_fmodf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_fmodf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_object_size : TFun(TInt(unsigned long, ), : TPtr(TVoid(), ), : TInt(int,
-                                ),
-) ;  */
+   unsigned long __builtin_object_size(void * , int  ) ;  */
 /* compiler builtin: 
-   __builtin_va_arg : TFun(TVoid(), : TBuiltin_va_list(), : TInt(unsigned long, ),
-                           : TPtr(TVoid(), ), ) ;  */
+   void __builtin_va_arg(__builtin_va_list  , unsigned long  , void * ) ;  */
 /* compiler builtin: 
-   __builtin_stdarg_start : TFun(TVoid(), : TBuiltin_va_list(), ) ;  */
+   void __builtin_stdarg_start(__builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_ia32_mulps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_mulps(float __attribute__((____vector_size____(16)))   ,
+                                                                        float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin_tanhl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_tanhl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_nan : TFun(TFloat(double, ), : TPtr(TInt(char,  const  ), ), ) ;  */
+   double __builtin_nan(char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_return : TFun(TVoid(), : TPtr(TVoid( const  ), ), ) ;  */
+   void __builtin_return(void const   * ) ;  */
 /* compiler builtin: 
-   __builtin_atanl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_atanl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_huge_vall : TFun(TFloat(long double, ), , ) ;  */
+   long double __builtin_huge_vall(void) ;  */
 /* compiler builtin: 
-   __builtin_inff : TFun(TFloat(float, ), , ) ;  */
+   float __builtin_inff(void) ;  */
 /* compiler builtin: 
-   __builtin_sqrtl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_sqrtl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_fmodl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_fmodl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin___printf_chk : TFun(TInt(int, ), : TInt(int, ), : TPtr(TInt(char,  const  ),
-                                 )..., ) ;  */
+   int __builtin___printf_chk(int  , char const   *  , ...) ;  */
 /* compiler builtin: 
-   __builtin_floorf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_floorf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_fabsf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_fabsf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_popcountll : TFun(TInt(int, ), : TInt(unsigned long long, ), ) ;  */
+   int __builtin_popcountll(unsigned long long  ) ;  */
 /* compiler builtin: 
-   __builtin___sprintf_chk : TFun(TInt(int, ), : TPtr(TInt(char, ), ), : TInt(int,
-                                  ), : TInt(unsigned long,
-                                  ),
-                                  : TPtr(TInt(char,  const  ), )..., ) ;  */
+   int __builtin___sprintf_chk(char * , int  , unsigned long  , char const   *  , ...) ;  */
 /* compiler builtin: 
-   __builtin___vprintf_chk : TFun(TInt(int, ), : TInt(int, ), : TPtr(TInt(char,  const  ),
-                                  ), : TBuiltin_va_list(),
-) ;  */
+   int __builtin___vprintf_chk(int  , char const   * , __builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_ia32_maxps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_maxps(float __attribute__((____vector_size____(16)))   ,
+                                                                        float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin___snprintf_chk : TFun(TInt(int, ), : TPtr(TInt(char, ), ), : TInt(unsigned long,
-                                   ),
-                                   : TInt(int, ), : TInt(unsigned long, ), : TPtr(TInt(char,
-                                                                                        const  ),
-                                   )...,
-) ;  */
+   int __builtin___snprintf_chk(char * , unsigned long  , int  , unsigned long  ,
+                                char const   *  , ...) ;  */
 /* compiler builtin: 
-   __builtin_infl : TFun(TFloat(long double, ), , ) ;  */
+   long double __builtin_infl(void) ;  */
 /* compiler builtin: 
-   __builtin_mempcpy : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TPtr(TVoid( const  ),
-                            ), : TInt(unsigned long,
-                            ),
-) ;  */
+   void *__builtin_mempcpy(void * , void const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_floorl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_floorl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_ctzl : TFun(TInt(int, ), : TInt(unsigned long, ), ) ;  */
+   int __builtin_ctzl(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_fabsl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_fabsl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_clz : TFun(TInt(int, ), : TInt(unsigned int, ), ) ;  */
+   int __builtin_clz(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_fabs : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_fabs(double  ) ;  */
 /* compiler builtin: 
-   __builtin_popcount : TFun(TInt(int, ), : TInt(unsigned int, ), ) ;  */
+   int __builtin_popcount(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_bcopy : TFun(TVoid(), : TPtr(TVoid( const  ), ), : TPtr(TVoid(), ), : TInt(unsigned long,
-                          ),
-) ;  */
+   void __builtin_bcopy(void const   * , void * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_ceil : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_ceil(double  ) ;  */
 /* compiler builtin: 
-   __builtin_ldexp : TFun(TFloat(double, ), : TFloat(double, ), : TInt(int, ), ) ;  */
+   double __builtin_ldexp(double  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_sinf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_sinf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_acosf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_acosf(float  ) ;  */
 /* compiler builtin: 
-   __builtin___vsnprintf_chk : TFun(TInt(int, ), : TPtr(TInt(char, ), ), : TInt(unsigned long,
-                                    ),
-                                    : TInt(int, ), : TInt(unsigned long, ), : TPtr(TInt(char,
-                                                                                         const  ),
-                                    ),
-                                    : TBuiltin_va_list(), ) ;  */
+   int __builtin___vsnprintf_chk(char * , unsigned long  , int  , unsigned long  ,
+                                 char const   * , __builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_sinh : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_sinh(double  ) ;  */
 /* compiler builtin: 
-   __builtin_ffsll : TFun(TInt(int, ), : TInt(unsigned long long, ), ) ;  */
+   int __builtin_ffsll(unsigned long long  ) ;  */
 /* compiler builtin: 
-   __builtin___strcpy_chk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                            const  ),
-                                 ),
-                                 : TInt(unsigned long, ), ) ;  */
+   char *__builtin___strcpy_chk(char * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_inf : TFun(TFloat(double, ), , ) ;  */
+   double __builtin_inf(void) ;  */
 /* compiler builtin: 
-   __builtin_prefetch : TFun(TVoid(), : TPtr(TVoid( const  ), )..., ) ;  */
+   void __builtin_prefetch(void const   *  , ...) ;  */
 /* compiler builtin: 
-   __builtin_sinl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_sinl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_acosl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_acosl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_sqrt : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_sqrt(double  ) ;  */
 /* compiler builtin: 
-   __builtin_fmod : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_fmod(double  ) ;  */
 /* compiler builtin: 
-   __builtin_strcpy : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                      const  ),
-                           ),
-) ;  */
+   char *__builtin_strcpy(char * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_ceilf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_ceilf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_return_address : TFun(TPtr(TVoid(), ), : TInt(unsigned int, ), ) ;  */
+   void *__builtin_return_address(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin___stpcpy_chk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                            const  ),
-                                 ),
-                                 : TInt(unsigned long, ), ) ;  */
+   char *__builtin___stpcpy_chk(char * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_tanf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_tanf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_parityll : TFun(TInt(int, ), : TInt(unsigned long long, ), ) ;  */
+   int __builtin_parityll(unsigned long long  ) ;  */
 /* compiler builtin: 
-   __builtin_ldexpf : TFun(TFloat(float, ), : TFloat(float, ), : TInt(int, ), ) ;  */
+   float __builtin_ldexpf(float  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_types_compatible_p : TFun(TInt(int, ), : TInt(unsigned long, ), : TInt(unsigned long,
-                                       ),
-) ;  */
+   int __builtin_types_compatible_p(unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_log10 : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_log10(double  ) ;  */
 /* compiler builtin: 
-   __builtin_expf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_expf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_clzll : TFun(TInt(int, ), : TInt(unsigned long long, ), ) ;  */
+   int __builtin_clzll(unsigned long long  ) ;  */
 /* compiler builtin: 
-   __builtin_ia32_unpcklps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                                  : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                                  : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_unpcklps(float __attribute__((____vector_size____(16)))   ,
+                                                                           float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin_tanh : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_tanh(double  ) ;  */
 /* compiler builtin: 
-   __builtin_constant_p : TFun(TInt(int, ), : TInt(int, ), ) ;  */
+   int __builtin_constant_p(int  ) ;  */
 /* compiler builtin: 
-   __builtin_ceill : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_ceill(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_va_arg_pack_len : TFun(TInt(int, ), , ) ;  */
+   int __builtin_va_arg_pack_len(void) ;  */
 /* compiler builtin: 
-   __builtin_apply : TFun(TPtr(TVoid(), ), : TPtr(TFun(TVoid(), None, ), ), : TPtr(TVoid(),
-                          ),
-                          : TInt(unsigned long, ), ) ;  */
+   void *__builtin_apply(void (*)() , void * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_tanl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_tanl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_log : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_log(double  ) ;  */
 /* compiler builtin: 
-   __builtin_ldexpl : TFun(TFloat(long double, ), : TFloat(long double, ), : TInt(int,
-                           ),
-) ;  */
+   long double __builtin_ldexpl(long double  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_popcountl : TFun(TInt(int, ), : TInt(unsigned long, ), ) ;  */
+   int __builtin_popcountl(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_expl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_expl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin___memset_chk : TFun(TPtr(TVoid(), ), : TPtr(TVoid(), ), : TInt(int, ),
-                                 : TInt(unsigned long, ), : TInt(unsigned long, ),
-) ;  */
+   void *__builtin___memset_chk(void * , int  , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin___strncat_chk : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                             const  ),
-                                  ),
-                                  : TInt(unsigned long, ), : TInt(unsigned long, ),
-) ;  */
+   char *__builtin___strncat_chk(char * , char const   * , unsigned long  , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_huge_val : TFun(TFloat(double, ), , ) ;  */
+   double __builtin_huge_val(void) ;  */
 /* compiler builtin: 
-   __builtin_next_arg : TFun(TBuiltin_va_list(), , ) ;  */
+   __builtin_va_list __builtin_next_arg(void) ;  */
 /* compiler builtin: 
-   __builtin_apply_args : TFun(TPtr(TVoid(), ), , ) ;  */
+   void *__builtin_apply_args(void) ;  */
 /* compiler builtin: 
-   __builtin_powif : TFun(TFloat(float, ), : TFloat(float, ), : TInt(int, ), ) ;  */
+   float __builtin_powif(float  , int  ) ;  */
 /* compiler builtin: 
-   __builtin___vfprintf_chk : TFun(TInt(int, ), : TPtr(TVoid(), ), : TInt(int, ),
-                                   : TPtr(TInt(char,  const  ), ), : TBuiltin_va_list(),
-) ;  */
+   int __builtin___vfprintf_chk(void * , int  , char const   * , __builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_modff : TFun(TFloat(float, ), : TFloat(float, ), : TPtr(TFloat(float,
-                                                                     ), ),
-) ;  */
+   float __builtin_modff(float  , float * ) ;  */
 /* compiler builtin: 
-   __builtin_atan2 : TFun(TFloat(double, ), : TFloat(double, ), : TFloat(double, ),
-) ;  */
+   double __builtin_atan2(double  , double  ) ;  */
 /* compiler builtin: 
-   __builtin_strncpy : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                       const  ),
-                            ),
-                            : TInt(unsigned long, ), ) ;  */
+   char *__builtin_strncpy(char * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_powil : TFun(TFloat(long double, ), : TFloat(long double, ), : TInt(int,
-                          ),
-) ;  */
+   long double __builtin_powil(long double  , int  ) ;  */
 /* compiler builtin: 
-   __builtin_cosf : TFun(TFloat(float, ), : TFloat(float, ), ) ;  */
+   float __builtin_cosf(float  ) ;  */
 /* compiler builtin: 
-   __builtin_bzero : TFun(TVoid(), : TPtr(TVoid(), ), : TInt(unsigned long, ), ) ;  */
+   void __builtin_bzero(void * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_strspn : TFun(TInt(unsigned long, ), : TPtr(TInt(char,  const  ), ),
-                           : TPtr(TInt(char,  const  ), ), ) ;  */
+   unsigned long __builtin_strspn(char const   * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_modfl : TFun(TFloat(long double, ), : TFloat(long double, ), : TPtr(TFloat(long double,
-                                                                                 ),
-                          ),
-) ;  */
+   long double __builtin_modfl(long double  , long double * ) ;  */
 /* compiler builtin: 
-   __builtin_parity : TFun(TInt(int, ), : TInt(unsigned int, ), ) ;  */
+   int __builtin_parity(unsigned int  ) ;  */
 /* compiler builtin: 
-   __builtin_cosh : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_cosh(double  ) ;  */
 /* compiler builtin: 
-   __builtin_strncat : TFun(TPtr(TInt(char, ), ), : TPtr(TInt(char, ), ), : TPtr(TInt(char,
-                                                                                       const  ),
-                            ),
-                            : TInt(unsigned long, ), ) ;  */
+   char *__builtin_strncat(char * , char const   * , unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_expect : TFun(TInt(long, ), : TInt(long, ), : TInt(long, ), ) ;  */
+   long __builtin_expect(long  , long  ) ;  */
 /* compiler builtin: 
-   __builtin_acos : TFun(TFloat(double, ), : TFloat(double, ), ) ;  */
+   double __builtin_acos(double  ) ;  */
 /* compiler builtin: 
-   __builtin_va_arg_pack : TFun(TInt(int, ), , ) ;  */
+   int __builtin_va_arg_pack(void) ;  */
 /* compiler builtin: 
-   __builtin_ia32_addps : TFun(TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-                               : TFloat(float,  __attribute__((____vector_size____(16))) ),
-) ;  */
+   float __attribute__((____vector_size____(16)))  __builtin_ia32_addps(float __attribute__((____vector_size____(16)))   ,
+                                                                        float __attribute__((____vector_size____(16)))   ) ;  */
 /* compiler builtin: 
-   __builtin_cosl : TFun(TFloat(long double, ), : TFloat(long double, ), ) ;  */
+   long double __builtin_cosl(long double  ) ;  */
 /* compiler builtin: 
-   __builtin_va_start : TFun(TVoid(), : TBuiltin_va_list(), ) ;  */
+   void __builtin_va_start(__builtin_va_list  ) ;  */
 /* compiler builtin: 
-   __builtin_ctzll : TFun(TInt(int, ), : TInt(unsigned long long, ), ) ;  */
+   int __builtin_ctzll(unsigned long long  ) ;  */
 /* compiler builtin: 
-   __builtin_strcspn : TFun(TInt(unsigned long, ), : TPtr(TInt(char,  const  ), ),
-                            : TPtr(TInt(char,  const  ), ), ) ;  */
+   unsigned long __builtin_strcspn(char const   * , char const   * ) ;  */
 /* compiler builtin: 
-   __builtin_ffsl : TFun(TInt(int, ), : TInt(unsigned long, ), ) ;  */
+   int __builtin_ffsl(unsigned long  ) ;  */
 /* compiler builtin: 
-   __builtin_nanf : TFun(TFloat(float, ), : TPtr(TInt(char,  const  ), ), ) ;  */
-#line 8 "float.c"
-extern printf : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 10
-extern strtod : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 22
-extern cos : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 22
-extern sin : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 23
-extern exp : TFun(TInt(int, ), None,  /* missing proto */  ) ;
-#line 6 "float.c"
-main : TFun(TInt(int, ), argc: TInt(int, ), argv: TPtr(TPtr(TInt(char, ), ), ), ) 
-{ input : TArray(TInt(char, ), Some(Const(Int64(800,int,None))), ) ;
-  entptr : TPtr(TInt(char, ), ) ;
-  x : TFloat(double, ) ;
-  tmp : TInt(int, ) ;
-  i : TInt(int, ) ;
-  n : TInt(int, ) ;
-  y : TFloat(double, ) ;
-  z : TFloat(double, ) ;
-  b : TFloat(double, ) ;
-  d : TFloat(double, ) ;
-  f : TFloat(double, ) ;
-  r : TFloat(double, ) ;
-  tmp___0 : TInt(int, ) ;
-  tmp___1 : TInt(int, ) ;
-  tmp___2 : TInt(int, ) ;
-  tmp___3 : TInt(int, ) ;
+   float __builtin_nanf(char const   * ) ;  */
+#line 3 "float.c"
+double sqr(double x ) 
+{ double r ;
 
   {
-#line 8
-  Lval(Var(printf, NoOffset))(Const(CStr("Test program: gsl_function\n")));
-#line 10
-  Var(tmp, NoOffset) = Lval(Var(strtod, NoOffset))(Lval(Mem(IndexPI(Lval(Var(argv,
-                                                                             NoOffset)),
-                                                                    Const(Int64(1,int,None))),
-                                                            NoOffset)), AddrOf(Var(entptr,
-                                                                                   NoOffset)));
-#line 10
-  Var(x, NoOffset) = CastE(TFloat(double, ), Lval(Var(tmp, NoOffset)));
-#line 11
-  Lval(Var(printf, NoOffset))(Const(CStr("%.10e\n")), Lval(Var(x, NoOffset)));
-#line 13
-  Var(n, NoOffset) = Const(Int64(8192,int,None));
-#line 15
-  Var(z, NoOffset) = CastE(TFloat(double, ), Lval(Var(n, NoOffset)));
-#line 15
-  Var(y, NoOffset) = Lval(Var(z, NoOffset));
-#line 16
-  if (<(Lval(Var(x, NoOffset)), CastE(TFloat(double, ), Const(Int64(0,int,None))))) {
-#line 16
-    Var(x, NoOffset) = CastE(TFloat(double, ), Const(Int64(1,int,None)));
-  }
-#line 17
-  Var(i, NoOffset) = Const(Int64(0,int,None));
-#line 17
-  while (<(Lval(Var(i, NoOffset)), Lval(Var(n, NoOffset)))) {
-#line 18
-    Var(y, NoOffset) += Lval(Var(x, NoOffset));
-#line 19
-    Var(x, NoOffset) = CastE(TFloat(double, ), Const(Int64(1,int,None)));
-#line 20
-    Var(n, NoOffset) = Lval(Var(n, NoOffset));
-#line 17
-    Var(i, NoOffset) ++;
-  }
-#line 21
-  Var(y, NoOffset) /= Lval(Var(z, NoOffset));
-#line 22
-  Var(tmp___0, NoOffset) = Lval(Var(cos, NoOffset))(Lval(Var(z, NoOffset)));
-#line 22
-  Var(tmp___1, NoOffset) = Lval(Var(sin, NoOffset))(PlusA(Lval(Var(z, NoOffset)),
-                                                          CastE(TFloat(double, ),
-                                                                Const(Int64(1,int,None)))));
-#line 22
-  Var(b, NoOffset) = CastE(TFloat(double, ), PlusA(PlusA(Lval(Var(tmp___0, NoOffset)),
-                                                         Lval(Var(tmp___1, NoOffset))),
-                                                   Const(Int64(1,int,None))));
-#line 23
-  Var(tmp___2, NoOffset) = Lval(Var(exp, NoOffset))(Const(Int64(2,int,None)));
-#line 23
-  Var(d, NoOffset) = CastE(TFloat(double, ), Lval(Var(tmp___2, NoOffset)));
-#line 24
-  if (>(PlusA(Lval(Var(z, NoOffset)), CastE(TFloat(double, ), Const(Int64(100,int,None)))),
-        CastE(TFloat(double, ), Const(Int64(300,int,None))))) {
-#line 25
-    Var(tmp___3, NoOffset) = Lval(Var(cos, NoOffset))(Const(Int64(3,int,None)));
-#line 25
-    Var(f, NoOffset) = CastE(TFloat(double, ), Lval(Var(tmp___3, NoOffset)));
-#line 26
-    Var(r, NoOffset) = /(PlusA(PlusA(Const(CReal(0.125000, double, 0.125)), Lval(Var(x,
-                                                                                     NoOffset))),
-                               CastE(TFloat(double, ), Lval(Var(n, NoOffset)))), PlusA(PlusA(PlusA(MinusA(Lval(Var(y,
-                                                                                                                   NoOffset)),
-                                                                                                          Lval(Var(b,
-                                                                                                                   NoOffset))),
-                                                                                                   Lval(Var(d,
-                                                                                                            NoOffset))),
-                                                                                             Lval(Var(f,
-                                                                                                      NoOffset))),
-                                                                                       UnOp(-,
-                                                                                            Const(CReal(0.875000, double, 0.875)))));
-  }
-#line 29
-  return (Const(Int64(0,int,None)));
+#line 5
+  r = (x + (double )1) * (x + (double )1) - x * x;
+#line 6
+  return (r);
 }
 }

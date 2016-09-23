@@ -2,12 +2,15 @@
 import os
 import random
 import time
-import sys
+import sys,getopt
 import getname
+import re
+from toHerbie import to_herbie 
+from lfherbie import re_load 
 
 now = time.time()
 #archive the max double value
-DOUBLE_MAX = (sys.float_info.max)/9000
+DOUBLE_MAX = 5.2872807935e+121
 MAX_LINE = 1
 def get_max(f):
 	global MAX_LINE
@@ -52,11 +55,11 @@ def run_re(n,stval,mxval,log,k):
 		frand=random.random()
 		frand=frand*pow(2,exp_i)
 		log.write(repr(frand)+"\n")
-		os.system("../gsl_fun.sh "+k+" " + repr(frand))
+		os.system("../run.sh "+k+" " + repr(frand))
 		if os.path.isfile("statistic_relative_error_1"):
 			os.system("cat statistic_relative_error_1>>log_"+k)
 			os.system("cat max_location_1>>max_"+k)
-			os.system("rm statistic*") 
+			os.system("rm  statistic_relative_error_1")
 			os.system("rm max_location_*")
 		else:
 			os.system("echo ' NaN'>>log_"+k)
@@ -64,23 +67,26 @@ def run_re(n,stval,mxval,log,k):
 startval = 0
 #begin evalue for ten iter
 def eva_times(n,itr,flag):
-
 	global MAX_LINE
-	os.mkdir(flag)
+	if not os.path.exists(flag):
+		os.mkdir(flag)
+	else:
+		os.system("rm -rf "+flag)
+		os.mkdir(flag)
 	k = flag
 	dir_l = 'cp '+flag+'.c '+flag
+	dir_l2 = 'cp '+'test.c '+flag
+	dir_l3 = 'cp '+flag+'.h '+flag
 	os.system(dir_l)
-	
+	os.system(dir_l2)
+	os.system(dir_l2)
 	os.chdir(flag)
-	os.system("gcc "+flag+".c -g -o "+flag)
+	os.system("gcc "+flag+".c test.c -g -lm -o "+flag)
 	#log_the_input value
 	file_log=open("log_s_"+k,"wb")
 	file_log2=open("log_s2_"+k,"wb")
-
 	stval = startval
 	maxval = DOUBLE_MAX
-
-
 	for i in range(0,n):
 		#find mid value between [0,DOUBLE_MAX]
 		midval = ((maxval-stval)/2.0)+stval
@@ -117,6 +123,8 @@ def eva_times(n,itr,flag):
 	max_err = get_max("log_"+k)
 	avg_err = get_avg("log_"+k)
 	print "the max error the tool found is :"+repr(max_err)
+	print "the avg error the tool found is :"+repr(avg_err)
+	print "the intervel is:["+repr(tag_a)+','+repr(tag_b) + ']'
 	read=getname.read_file('max_'+k,MAX_LINE)
 	print MAX_LINE
 	print read[0]
@@ -134,15 +142,57 @@ def eva_times(n,itr,flag):
 def pass_to_astop(line_num,file_name):
 	os.system('./astop '+'--id ' + str(line_num) +' '+ file_name)
 
-def cover_to_herbie(file_name):
-	fi=open(file_name,'r')
-	for line in fi.readlines():
-		
 
 
-if __name__ == '__main__':
-	get_line=eva_times(2,5,'float')
-	pass_to_astop(get_line,'float.c')
-	covert_to_herbie('a.txt')
+def Usage():
+    print 'autoFP usage:'
+    print '-h,--help: print help message.'
+    print '-v, --version: 1.0'
+    print '-m, --mainiter: the number you want to iter for mainloop to get fault location,default 10'
+    print '-s, --sampleiter: the number of sample point in each loop, default 1000'
+    print '-f, --filename: the file to be repair'
+
+def Version():
+    print 'autoFP 1.0'
+
+def main():
+
+        opts, args = getopt.getopt(sys.argv[1:], "hvm:s:f:", ["help", "version","mainiter=","sampleiter=","filename="])
+
+	main_iter = 10
+	s_iter = 1000
+	filename = ''
+	print opts
+	for o, a in opts:
+		if o in ('-h', '--help'):
+            		Usage()
+            		sys.exit(1)
+        	elif o in ('-v', '--version'):
+            		Version()
+            		sys.exit(1)
+        	elif o in ('-m', '--mainiter'):
+            		main_iter = int(a)
+        	elif o in ('-s', '--sampleiter'):
+            		s_iter=int(a)
+        	elif o in ('-f', '--filename'):
+            		filename=a
+        	else:
+            		print 'unhandled option'
+            		sys.exit(3)
+	if (filename != '')&(os.path.exists(filename)):
+		stripf = re.sub('.c','',filename)
+		print stripf
+		get_line=eva_times(main_iter,s_iter,stripf)
+		os.system('./rmtxt.sh')
+		pass_to_astop(get_line,filename)
+		to_herbie(stripf)
+		re_load(stripf+'.output',filename,get_line)
+    	else:
+		print "file no exist or empty"
+     
+if __name__ == "__main__":
+    main()
+
+
 
 
