@@ -10,7 +10,7 @@ from lfherbie import re_load
 
 now = time.time()
 #archive the max double value
-DOUBLE_MAX = 5.2872807935e+121
+DOUBLE_MAX = 1000000.0
 MAX_LINE = 1
 def get_max(f):
 	global MAX_LINE
@@ -54,8 +54,12 @@ def run_re(n,stval,mxval,log,k):
 		exp_i=random.uniform(get_bit(stval),get_bit(mxval))
 		frand=random.random()
 		frand=frand*pow(2,exp_i)
-		log.write(repr(frand)+"\n")
-		os.system("../run.sh "+k+" " + repr(frand))
+		exp_i2=random.uniform(get_bit(stval),get_bit(mxval))
+		frand2=random.random()
+		frand2=frand*pow(2,exp_i2)
+		log.write(repr(frand)+" ")
+		log.write(repr(frand2)+"\n")
+		os.system("../run.sh "+k+" " + repr(frand) + repr(frand2))
 		if os.path.isfile("statistic_relative_error_1"):
 			os.system("cat statistic_relative_error_1>>log_"+k)
 			os.system("cat max_location_1>>max_"+k)
@@ -74,9 +78,9 @@ def eva_times(n,itr,flag):
 		os.system("rm -rf "+flag)
 		os.mkdir(flag)
 	k = flag
-	dir_l = 'cp '+flag+'.c '+flag
-	dir_l2 = 'cp '+'test.c '+flag
-	dir_l3 = 'cp '+flag+'.h '+flag
+	dir_l = 'cp bench/'+flag+'.c '+flag
+	dir_l2 = 'cp bench/'+'test.c '+flag
+	dir_l3 = 'cp bench/'+flag+'.h '+flag
 	os.system(dir_l)
 	os.system(dir_l2)
 	os.system(dir_l3)
@@ -140,7 +144,7 @@ def eva_times(n,itr,flag):
 	return read[1]
 
 def pass_to_astop(line_num,file_name):
-	os.system('./astop '+'--id ' + str(line_num) +' '+ file_name)
+	os.system('./astop '+'--id ' + str(line_num) +' '+ 'bench/'+file_name)
 
 
 
@@ -151,17 +155,19 @@ def Usage():
     print '-m, --mainiter: the number you want to iter for mainloop to get fault location,default 10'
     print '-s, --sampleiter: the number of sample point in each loop, default 1000'
     print '-f, --filename: the file to be repair'
+    print '-i, --inputnum: the input num of the function'
 
 def Version():
     print 'autoFP 1.0'
 
 def main():
 
-        opts, args = getopt.getopt(sys.argv[1:], "hvm:s:f:", ["help", "version","mainiter=","sampleiter=","filename="])
+        opts, args = getopt.getopt(sys.argv[1:], "hvm:s:f:i:", ["help", "version","mainiter=","sampleiter=","filename="])
 
 	main_iter = 10
 	s_iter = 1000
 	filename = ''
+	inum = 1
 	print opts
 	for o, a in opts:
 		if o in ('-h', '--help'):
@@ -176,23 +182,25 @@ def main():
             		s_iter=int(a)
         	elif o in ('-f', '--filename'):
             		filename=a
+		elif o in ('-i', '--inputnum'):
+			inum = int(a)
         	else:
             		print 'unhandled option'
             		sys.exit(3)
-	if (filename != '')&(os.path.exists(filename)):
-		stripf = re.sub('.c','',filename)
+	if (filename != '')&(os.path.exists('bench/'+filename)):
+		stripf = re.sub('\.c','',filename)
 		print stripf
-		get_line=eva_times(main_iter,s_iter,stripf)
+		get_line=eva_times(main_iter,s_iter,stripf,inum)
 		os.system('./rmtxt.sh')
 		pass_to_astop(get_line,filename)
 		to_herbie(stripf)
-		re_load(stripf+'.output',filename,get_line)
+		re_load(stripf+'.output','bench/'+filename,get_line)
     	else:
 		print "file no exist or empty"
      
 if __name__ == "__main__":
     main()
-
+#python run_analysis.py -m 2 -s 5 -f 'physic.c'
 
 
 

@@ -287,16 +287,17 @@ let main () = begin
       let file = Frontc.parse arg () in 
       let id = !get_id in
       Cfg.computeFileCFG file;
+      let clPrinter = new Cil.plainCilPrinterClass in 
+      let fname = "b" ^ ".txt" in
+      let fout = open_out fname in 
+      Cil.dumpFile clPrinter fout "fileprinter" file  ;
+    		close_out fout ;
       (*cross the file, construct the table*)
       visitCilFileSameGlobals (stmt_v file id) file;
       visitCilFileSameGlobals (s_cos file id) file;
       visitCilFileSameGlobals (c_call file id) file;  
       visitCilFileSameGlobals (f_exp file id) file;
-      let clPrinter = new Cil.defaultCilPrinterClass in 
-      let fname = "b" ^ ".txt" in
-      let fout = open_out fname in 
-      Cil.dumpFile clPrinter fout "fileprinter" file  ;
-    		close_out fout ;		
+      		
       let ast = arg ^ ".ast" in 
       let fout = open_out_bin ast in 
       Marshal.to_channel fout (file) [] ;
