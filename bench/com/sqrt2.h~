@@ -1,0 +1,4 @@
+#ifndef _H_SQR
+#define _H_SQR
+double SQR(double x);
+#endif

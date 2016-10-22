@@ -1,0 +1,1 @@
+frama-c test.c -load-script valLF.ml -val -then -cfg

@@ -1,0 +1,1 @@
+frama-c bench/physic.c -load-script valLF.ml -val -main semf -then -vL 23 -outf physic 

@@ -1,0 +1,21 @@
+variable b
+tmp
+variable tmp
+strtod
+*(argv + 1)
+& entptr
+variable tmp___0
+sqrt
+b * b - (4.0 * 7.0) * 2.0
+variable b
+tmp
+variable tmp
+strtod
+*(argv + 1)
+& entptr
+variable b
+tmp
+variable tmp
+strtod
+*(argv + 1)
+& entptr
